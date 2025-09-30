@@ -183,7 +183,7 @@ namespace TelegramWalletBot
                     $"• User ID: \n" +  // Spoiler formatting
                     $"{currentUser.UserId}\n"+
                     $"• Balance: {currentUser.Balance} coins",
-                    parseMode: ParseMode.MarkdownV2, // Use MarkdownV2 for spoiler support
+                    parseMode: ParseMode.Markdown, // Use MarkdownV2 for spoiler support
                     cancellationToken: ct
                 );
                 break;
