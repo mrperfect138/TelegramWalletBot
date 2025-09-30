@@ -181,7 +181,7 @@ namespace TelegramWalletBot
                     $"• Name: {currentUser.FirstName}\n" +
                     $"• Username: @{currentUser.Username}\n" +
                     $"• User ID: \n" +  // Spoiler formatting
-                    $"||{currentUser.UserId}||\n"+
+                    $"{currentUser.UserId}\n"+
                     $"• Balance: {currentUser.Balance} coins",
                     parseMode: ParseMode.MarkdownV2, // Use MarkdownV2 for spoiler support
                     cancellationToken: ct
