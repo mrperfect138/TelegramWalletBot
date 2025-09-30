@@ -125,6 +125,8 @@ namespace TelegramWalletBot
         var args =  update.Message.Text.Split(' ');
         var command = args[0].ToLower();
 
+        #region Commands
+
         switch (command)
         {
             case "/start":
@@ -132,8 +134,10 @@ namespace TelegramWalletBot
                     chatId,
                     "💰 *Wallet Bot* 💰\n\n" +
                     "Your digital pocket for fun currency!\n\n" +
+                    "*/profile* - shows your profile\n"+
                     "*/balance* - Check your balance\n" +
                     "*/transfer* @username amount - Send coins\n" +
+                    "*/history* - Shows your recent transactions\n"+
                     "*/help* - Show all commands",
                     parseMode: ParseMode.Markdown,
                     cancellationToken: ct);
@@ -157,10 +161,10 @@ namespace TelegramWalletBot
                     chatId,
                     "💡 *Available Commands:*\n\n" +
                     "*/start* - Welcome message\n" +
+                    "*/profile* - shows your profile\n"+
                     "*/balance* - Check your Zephyr\n" +
                     "*/transfer @username amount* - Send coins\n" +
-                    
-                    "*/history* - Shows your recent transactions\n\n"+
+                    "*/history* - Shows your recent transactions\n"+
                     "*/help* - This message\n\n" +
                     "Example: `/transfer @john 50`",
                     parseMode: ParseMode.Markdown,
@@ -169,7 +173,19 @@ namespace TelegramWalletBot
             case "/history":
                 await ShowHistory(bot, update.Message, ct);
                 break;
-
+            case "/profile":
+                var currentUser = _users[userId];
+                await bot.SendTextMessageAsync(
+                    chatId,
+                    $"👤 *Profile*\n\n" +
+                    $"• Name: {currentUser.FirstName}\n" +
+                    $"• Username: @{currentUser.Username}\n" +
+                    $"• User ID: {currentUser.UserId}\n" +
+                    $"• Balance: {currentUser.Balance} coins",
+                    parseMode: ParseMode.Markdown,
+                    cancellationToken: ct
+                );
+                break;
             default:
                 await bot.SendTextMessageAsync(
                     chatId, 
@@ -177,6 +193,8 @@ namespace TelegramWalletBot
                     cancellationToken: ct);
                 break;
         }
+
+        #endregion
     }
     catch (Exception ex)
     {
