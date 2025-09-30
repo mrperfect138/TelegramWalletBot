@@ -1,25 +1,30 @@
-# Use the official .NET SDK image to build the app
+# Use official .NET SDK image to build the app
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 
+# Set working directory
 WORKDIR /app
 
-# Copy csproj and restore dependencies
-COPY *.csproj ./
+# Copy project files
+COPY . ./
+
+# Restore NuGet packages
 RUN dotnet restore
 
-# Copy everything else and publish
-COPY . ./
+# Publish the project to a folder called 'out'
 RUN dotnet publish -c Release -o out
 
-# Build runtime image
-FROM mcr.microsoft.com/dotnet/runtime:8.0
+# Use the runtime image for smaller final image
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
+
+# Set working directory
 WORKDIR /app
+
+# Copy the published files from build stage
 COPY --from=build /app/out ./
 
-# Environment variables (you can override in Render)
-ENV TELEGRAM_TOKEN=""
-ENV GITHUB_TOKEN=""
-ENV GIST_ID=""
+# Expose a dummy port so Render is happy
+ENV PORT 10000
+EXPOSE 10000
 
-# Command to run your bot
+# Start the bot
 ENTRYPOINT ["dotnet", "TelegramWalletBot.dll"]
