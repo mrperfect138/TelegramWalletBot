@@ -143,7 +143,7 @@ namespace TelegramWalletBot
                 var user = _users[userId];
                 await bot.SendTextMessageAsync(
                     chatId,
-                    $"💳 *Your Balance:* {user.Balance} coins",
+                    $"💳 *Your Balance:* {user.Balance} Zephyr",
                     parseMode: ParseMode.Markdown,
                     cancellationToken: ct);
                 break;
@@ -157,7 +157,7 @@ namespace TelegramWalletBot
                     chatId,
                     "💡 *Available Commands:*\n\n" +
                     "*/start* - Welcome message\n" +
-                    "*/balance* - Check your coins\n" +
+                    "*/balance* - Check your Zephyr\n" +
                     "*/transfer @username amount* - Send coins\n" +
                     
                     "*/history* - Shows your recent transactions\n\n"+
@@ -253,15 +253,15 @@ private async Task HandleTransfer(ITelegramBotClient bot, Message message, strin
     // Notify both users
     await bot.SendTextMessageAsync(
         message.Chat.Id,
-        $"✅ Successfully sent {amount} coins to @{recipient.Username}!",
+        $"✅ Successfully sent {amount} Zephyr to @{recipient.Username}!",
         cancellationToken: ct);
 
     try
     {
         await bot.SendTextMessageAsync(
             recipient.UserId,
-            $"💰 You received {amount} coins from @{sender.Username}!\n" +
-            $"New balance: {recipient.Balance} coins",
+            $"💰 You received {amount} Zephyr from @{sender.Username}!\n" +
+            $"New balance: {recipient.Balance} Zephyr",
             cancellationToken: ct);
     }
     catch
