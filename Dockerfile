@@ -4,9 +4,15 @@ WORKDIR /app
 # Copy everything first
 COPY . ./
 
-# Restore & publish
-RUN dotnet restore
-RUN dotnet publish -c Release -o out
+# # Restore & publish
+# RUN dotnet restore
+# RUN dotnet publish -c Release -o out
+# Restore dependencies
+RUN dotnet restore Telegram_Bot.sln
+
+# Build & publish
+RUN dotnet publish TelegramWalletBot.csproj -c Release -o out
+
 
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/runtime:8.0
