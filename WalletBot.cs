@@ -117,7 +117,7 @@ namespace TelegramWalletBot
         await bot.SendTextMessageAsync(
             chatId,
             response,
-            parseMode: ParseMode.Markdown,
+            
             cancellationToken: ct);
     }
     private Task ErrorHandler(ITelegramBotClient botClient, Exception exception, CancellationToken ct)
