@@ -117,7 +117,7 @@ namespace TelegramWalletBot
                 UserId = userId,
                 Username =  update.Message.From.Username ?? "unknown",
                 FirstName =  update.Message.From.FirstName,
-                Balance = 1000
+                Balance = 0
             };
             await SaveDataAsync();
         }
@@ -159,6 +159,8 @@ namespace TelegramWalletBot
                     "*/start* - Welcome message\n" +
                     "*/balance* - Check your coins\n" +
                     "*/transfer @username amount* - Send coins\n" +
+                    
+                    "*/history* - Shows your recent transactions\n\n"+
                     "*/help* - This message\n\n" +
                     "Example: `/transfer @john 50`",
                     parseMode: ParseMode.Markdown,
