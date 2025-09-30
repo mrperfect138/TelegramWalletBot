@@ -22,9 +22,7 @@ WORKDIR /app
 # Copy the published files from build stage
 COPY --from=build /app/out ./
 
-# Expose a dummy port so Render is happy
-ENV PORT 10000
-EXPOSE 10000
+
 
 # Start the bot
 ENTRYPOINT ["dotnet", "TelegramWalletBot.dll"]
