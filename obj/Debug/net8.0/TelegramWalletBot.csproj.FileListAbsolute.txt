@@ -12,6 +12,7 @@ D:\arian\C# Projects\Telegram_Bot\TelegramWalletBot\obj\Debug\net8.0\TelegramWal
 D:\arian\C# Projects\Telegram_Bot\TelegramWalletBot\obj\Debug\net8.0\TelegramWalletBot.AssemblyInfoInputs.cache
 D:\arian\C# Projects\Telegram_Bot\TelegramWalletBot\obj\Debug\net8.0\TelegramWalletBot.AssemblyInfo.cs
 D:\arian\C# Projects\Telegram_Bot\TelegramWalletBot\obj\Debug\net8.0\TelegramWalletBot.csproj.CoreCompileInputs.cache
+D:\arian\C# Projects\Telegram_Bot\TelegramWalletBot\obj\Debug\net8.0\TelegramWalletBot.sourcelink.json
 D:\arian\C# Projects\Telegram_Bot\TelegramWalletBot\obj\Debug\net8.0\Telegram.78E3202E.Up2Date
 D:\arian\C# Projects\Telegram_Bot\TelegramWalletBot\obj\Debug\net8.0\TelegramWalletBot.dll
 D:\arian\C# Projects\Telegram_Bot\TelegramWalletBot\obj\Debug\net8.0\refint\TelegramWalletBot.dll
